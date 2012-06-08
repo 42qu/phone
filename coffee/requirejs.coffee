@@ -1,6 +1,5 @@
 requirejs.config
     
-    baseUrl : '/js/'
  
     shim : 
 
@@ -15,24 +14,24 @@ requirejs.config
         jquery_tmpl : ['jquery']
 
         index : [
-            'jquery'
             'jquery_mobile'
             'jquery_tmpl'
+            'backbone'
         ]
 
     paths :
         
-        jquery : 'jquery/1.7.2'
+        jquery : '/js/jquery/1.7.2'
 
-        underscore : 'underscore/1.3.3'
+        underscore : '/js/underscore/1.3.3'
 
-        jquery_mobile : 'jquery.mobile/1.1.0' 
+        jquery_mobile : '/js/jquery.mobile/1.1.0' 
 
-        jquery_tmpl : 'jquery.tmpl/1.0'
+        jquery_tmpl : '/js/jquery.tmpl/1.0'
 
-        backbone : 'backbone/0.9.2' 
+        backbone : '/js/backbone/0.9.2' 
         
-    
+        index : '/js_dev/index'    
  
 require(
 
@@ -43,7 +42,16 @@ require(
         'jquery_tmpl'
         'backbone'
         'index'
-    ] 
+    ], 
+    ($) ->
+ 
+        $(document).bind(
+
+            "mobileinit", 
+            -> 
+                $.mobile.hashListeningEnabled = false;
+                $.mobile.pushStateEnabled = false;
+        )
 )
 
 

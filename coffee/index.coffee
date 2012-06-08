@@ -1,49 +1,76 @@
-requirejs.config
-    
-    baseUrl : '/js/'
+window.HomeView = Backbone.View.extend
+
+  tagName:  "li"
+
+  template: _.template($('#HOME').html())
+
+  events:
+
+    "click .check"              : "toggleDone",
+
+    "dblclick div.todo-content" : "edit",
+
+    "click span.todo-destroy"   : "clear",
+
+    "keypress .todo-input"      : "updateOnEnter"
+
+
+    render: (event) -> 
+
+        $(@el).html @template()
+
+        return @
+
  
-    shim : 
 
-        backbone :
-            deps : [
-                'underscore'
-                'jquery'
-            ]
+window.TaskView = Backbone.View.extend
 
-        jquery_mobile : ['jquery']
+  tagName:  "li"
 
-        jquery_tmpl : ['jquery']
+  template: _.template($('#TASK').html())
 
-        index : [
-            'jquery'
-            'jquery_mobile'
-            'jquery_tmpl'
-        ]
+  events:
 
-    paths :
-        
-        jquery : 'jquery/1.7.2'
+    "click .check"              : "toggleDone",
 
-        underscore : 'underscore/1.3.3'
+    "dblclick div.todo-content" : "edit",
 
-        jquery_mobile : 'jquery.mobile/1.1.0' 
+    "click span.todo-destroy"   : "clear",
 
-        jquery_tmpl : 'jquery.tmpl/1.0'
+    "keypress .todo-input"      : "updateOnEnter"
 
-        backbone : 'backbone/0.9.2' 
-        
+
+    render: (event) -> 
+
+        $(@el).html @template()
+
+        return @
+
+
+
+Router = Backbone.Router.extend
+
+    route :
+
+        ""      :     "home"
+        task    :     "task"
+
+    initialize : -> {
     
- 
-require(
+    }
 
-    [
-        'jquery'
-        'underscore'
-        'jquery_mobile'
-        'jquery_tmpl'
-        'backbone'
-        'index'
-    ] 
+    home : ->
+
+        alert 1
+
+        @changePage new HomeView()
+
+
+$(->
+
+    alert(1)
+    app = new Router()
+
 )
 
 
