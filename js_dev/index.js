@@ -18,8 +18,8 @@
     }
   });
 
-  require(['jquery', 'underscore', 'jquery_mobile', 'jquery_tmpl', 'backbone'], function($) {
-    return alert($);
+  require(['jquery', 'underscore', 'jquery_mobile', 'jquery_tmpl', 'backbone'], function() {
+    return {};
   });
 
 }).call(this);

@@ -39,8 +39,9 @@ require(
         'backbone'
     ] , 
 
-    ($) ->
-        alert($)
+    () -> {
+
+    } 
 )
 
 

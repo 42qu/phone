@@ -2,12 +2,17 @@
 ==============================
 
 
-安装 . Gentoo
+Gentoo 安装开发环境
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 npm install -g coffee-script
 emerge rubygems
 npm install -g jitter
  
+
+jQuery Mobile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* `jQuery Mobile 使用指南 <http://mobile.51cto.com/others-277758.htm>`_
 
 Backbone.js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
