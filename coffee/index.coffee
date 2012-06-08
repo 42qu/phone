@@ -1,19 +1,7 @@
 window.HomeView = Backbone.View.extend
 
-  tagName:  "li"
 
-  template: _.template($('#HOME').html())
-
-  events:
-
-    "click .check"              : "toggleDone",
-
-    "dblclick div.todo-content" : "edit",
-
-    "click span.todo-destroy"   : "clear",
-
-    "keypress .todo-input"      : "updateOnEnter"
-
+    template: -> $('#HOME').html()
 
     render: (event) -> 
 
@@ -25,19 +13,8 @@ window.HomeView = Backbone.View.extend
 
 window.TaskView = Backbone.View.extend
 
-  tagName:  "li"
 
-  template: _.template($('#TASK').html())
-
-  events:
-
-    "click .check"              : "toggleDone",
-
-    "dblclick div.todo-content" : "edit",
-
-    "click span.todo-destroy"   : "clear",
-
-    "keypress .todo-input"      : "updateOnEnter"
+    template: $('#TASK').html()
 
 
     render: (event) -> 
@@ -50,27 +27,48 @@ window.TaskView = Backbone.View.extend
 
 Router = Backbone.Router.extend
 
-    route :
+    routes :
 
         ""      :     "home"
         task    :     "task"
 
-    initialize : -> {
-    
-    }
+    initialize : -> 
+        
+        @firstPage = true
 
     home : ->
-
-        alert 1
 
         @changePage new HomeView()
 
 
+    changePage : (page) ->
+
+        $(page.el).attr('data-role', 'page')
+
+        page.render()
+
+        console.info(page.el)
+
+        $('body').append page.el
+
+        transition = $.mobile.defaultPageTransition;
+        
+        if this.firstPage
+ 
+            transition = 'none';
+            @firstPage = false
+
+        $.mobile.changePage $(page.el), {
+            changeHash:false, transition: transition
+        }
+
+
+
 $(->
 
-    alert(1)
     app = new Router()
 
+    Backbone.history.start()
 )
 
 

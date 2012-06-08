@@ -2,53 +2,56 @@
   var Router;
 
   window.HomeView = Backbone.View.extend({
-    tagName: "li",
-    template: _.template($('#HOME').html()),
-    events: {
-      "click .check": "toggleDone",
-      "dblclick div.todo-content": "edit",
-      "click span.todo-destroy": "clear",
-      "keypress .todo-input": "updateOnEnter",
-      render: function(event) {
-        $(this.el).html(this.template());
-        return this;
-      }
+    template: function() {
+      return $('#HOME').html();
+    },
+    render: function(event) {
+      $(this.el).html(this.template());
+      return this;
     }
   });
 
   window.TaskView = Backbone.View.extend({
-    tagName: "li",
-    template: _.template($('#TASK').html()),
-    events: {
-      "click .check": "toggleDone",
-      "dblclick div.todo-content": "edit",
-      "click span.todo-destroy": "clear",
-      "keypress .todo-input": "updateOnEnter",
-      render: function(event) {
-        $(this.el).html(this.template());
-        return this;
-      }
+    template: $('#TASK').html(),
+    render: function(event) {
+      $(this.el).html(this.template());
+      return this;
     }
   });
 
   Router = Backbone.Router.extend({
-    route: {
+    routes: {
       "": "home",
       task: "task"
     },
     initialize: function() {
-      return {};
+      return this.firstPage = true;
     },
     home: function() {
-      alert(1);
       return this.changePage(new HomeView());
+    },
+    changePage: function(page) {
+      var transition;
+      $(page.el).attr('data-role', 'page');
+      page.render();
+      console.info(page.el);
+      $('body').append(page.el);
+      transition = $.mobile.defaultPageTransition;
+      if (this.firstPage) {
+        transition = 'none';
+        this.firstPage = false;
+      }
+      return $.mobile.changePage($(page.el), {
+        changeHash: false,
+        transition: transition
+      });
     }
   });
 
   $(function() {
     var app;
-    alert(1);
-    return app = new Router();
+    app = new Router();
+    return Backbone.history.start();
   });
 
 }).call(this);

@@ -43,14 +43,14 @@ require(
         'backbone'
         'index'
     ], 
-    ($) ->
- 
+    ($)->
         $(document).bind(
-
-            "mobileinit", 
+            "mobileinit",
             -> 
-                $.mobile.hashListeningEnabled = false;
-                $.mobile.pushStateEnabled = false;
+                $.mobile.ajaxEnabled = false;
+                $.mobile.linkBindingEnabled = false;
+                $.mobile.hashListeningEnabled = false;
+                $.mobile.pushStateEnabled = false;
         )
 )
 
