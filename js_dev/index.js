@@ -7,7 +7,8 @@
         deps: ['underscore', 'jquery']
       },
       jquery_mobile: ['jquery'],
-      jquery_tmpl: ['jquery']
+      jquery_tmpl: ['jquery'],
+      index: ['jquery', 'jquery_mobile', 'jquery_tmpl']
     },
     paths: {
       jquery: 'jquery/1.7.2',
@@ -18,8 +19,6 @@
     }
   });
 
-  require(['jquery', 'underscore', 'jquery_mobile', 'jquery_tmpl', 'backbone'], function() {
-    return {};
-  });
+  require(['jquery', 'underscore', 'jquery_mobile', 'jquery_tmpl', 'backbone', 'index']);
 
 }).call(this);

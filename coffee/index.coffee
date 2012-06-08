@@ -14,7 +14,11 @@ requirejs.config
 
         jquery_tmpl : ['jquery']
 
-
+        index : [
+            'jquery'
+            'jquery_mobile'
+            'jquery_tmpl'
+        ]
 
     paths :
         
@@ -27,6 +31,7 @@ requirejs.config
         jquery_tmpl : 'jquery.tmpl/1.0'
 
         backbone : 'backbone/0.9.2' 
+        
     
  
 require(
@@ -37,11 +42,8 @@ require(
         'jquery_mobile'
         'jquery_tmpl'
         'backbone'
-    ] , 
-
-    () -> {
-
-    } 
+        'index'
+    ] 
 )
 
 
