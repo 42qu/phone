@@ -6,8 +6,8 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 npm install -g coffee-script
 emerge rubygems
-gem install watchr 
-
+npm install -g jitter
+ 
 
 CoffeeScript
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
@@ -18,4 +18,9 @@ CoffeeScript
 * `CoffeeScript 基本篇(一) <http://blog.eddie.com.tw/2011/08/03/coffeescript-basic-part-1/>`_
 * `CoffeeScirpt中文手册 <http://island205.github.com/tlboc/>`_
 
+Git 技巧
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* git clean -df   删除未跟踪文件，但不包括.gitignore中的
+* git clean -n    测试删除的文件，实际不删除
+* git clean -dfx  删除所有文件
 
