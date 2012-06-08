@@ -13,6 +13,7 @@ jQuery Mobile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * `jQuery Mobile 使用指南 <http://mobile.51cto.com/others-277758.htm>`_
+* `Backbone.js + jQuery Mobile <https://github.com/ccoenraets/backbone-jquerymobile>`_
 
 Backbone.js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
