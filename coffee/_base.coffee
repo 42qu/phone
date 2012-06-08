@@ -8,7 +8,16 @@ xxx = (x) ->
     alert(x)
     x += 1
     
-    acb = (c,d) ->
+    return (c,d) ->
         alert(c)
 
+a = a||0
+if a ?= b
+    alert(c)
+
+
+s = '<html>'\
+        'wefawefa'\
+    '<body>'\
+    'xx'
 
