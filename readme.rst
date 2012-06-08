@@ -2,6 +2,13 @@
 ==============================
 
 
+安装 . Gentoo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+npm install -g coffee-script
+emerge rubygems
+gem install watchr 
+
+
 CoffeeScript
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
@@ -9,5 +16,6 @@ CoffeeScript
 * `当jQuery遭遇CoffeeScript的时候  <http://www.cnblogs.com/filod/archive/2011/09/17/2179578.html>`_
 * `官方文档  <http://jashkenas.github.com/coffee-script/>`_
 * `CoffeeScript 基本篇(一) <http://blog.eddie.com.tw/2011/08/03/coffeescript-basic-part-1/>`_
+* `CoffeeScirpt中文手册 <http://island205.github.com/tlboc/>`_
 
 
