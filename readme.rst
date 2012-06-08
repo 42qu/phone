@@ -11,6 +11,7 @@ npm install -g jitter
 
 Backbone.js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+
 * `Javascript 前端工具Backbone.js Framework 初学介绍 <http://blog.wu-boy.com/2012/04/backbonejs-framework-tutorial-example-1/>`_
 * `Using Backbone.js with CoffeeScript <http://spin.atomicobject.com/2011/05/06/using-backbone-js-with-coffeescript/>`_
 * `Backbone.js API中文文档 <http://www.csser.com/tools/backbone/backbone.js.html>` 
@@ -26,6 +27,7 @@ CoffeeScript
 
 Git 技巧
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * git clean -df   删除未跟踪文件，但不包括.gitignore中的
 * git clean -n    测试删除的文件，实际不删除
 * git clean -dfx  删除所有文件
