@@ -1,11 +1,25 @@
 (function() {
-  var Router;
+  var Note, Router;
+
+  Note = Backbone.Model.extend({
+    hi: function() {
+      return alert(1);
+    }
+  });
 
   window.HomeView = Backbone.View.extend({
     template: function() {
       return $('#HOME').html();
     },
     render: function(event) {
+      var note;
+      note = new Note({
+        title: "my"
+      });
+      alert(note.cid);
+      alert(note.idAttribute);
+      console.info(note.toJSON());
+      note.save();
       $(this.el).html(this.template());
       return this;
     }

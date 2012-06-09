@@ -1,9 +1,25 @@
+Note = Backbone.Model.extend
+
+    hi : -> alert 1
+    
+
+
+
 window.HomeView = Backbone.View.extend
 
 
     template: -> $('#HOME').html()
 
     render: (event) -> 
+
+        note = new Note
+
+            title : "my"
+
+        alert note.cid
+        alert note.idAttribute
+        console.info note.toJSON()
+        note.save()
 
         $(@el).html @template()
 
@@ -55,7 +71,8 @@ Router = Backbone.Router.extend
         
         if this.firstPage
  
-            transition = 'none';
+            transition = 'none'
+
             @firstPage = false
 
         $.mobile.changePage $(page.el), {
