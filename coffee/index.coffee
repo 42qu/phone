@@ -14,7 +14,7 @@ window.HomeView = Backbone.View.extend
 window.TaskView = Backbone.View.extend
 
 
-    template: $('#TASK').html()
+    template: -> $('#TASK').html()
 
 
     render: (event) -> 

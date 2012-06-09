@@ -12,7 +12,9 @@
   });
 
   window.TaskView = Backbone.View.extend({
-    template: $('#TASK').html(),
+    template: function() {
+      return $('#TASK').html();
+    },
     render: function(event) {
       $(this.el).html(this.template());
       return this;
