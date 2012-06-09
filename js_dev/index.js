@@ -2,6 +2,7 @@
   var Note, Router;
 
   Note = Backbone.Model.extend({
+    urlRoot: 'j/note',
     hi: function() {
       return alert(1);
     }

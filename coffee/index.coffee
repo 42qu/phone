@@ -1,5 +1,7 @@
 Note = Backbone.Model.extend
 
+    urlRoot: 'j/note'
+
     hi : -> alert 1
     
 
@@ -20,6 +22,7 @@ window.HomeView = Backbone.View.extend
         alert note.idAttribute
         console.info note.toJSON()
         note.save()
+
 
         $(@el).html @template()
 

@@ -23,6 +23,21 @@ Backbone.js
 * `Backbone.js API中文文档 <http://www.csser.com/tools/backbone/backbone.js.html>`_ 
 * `前端 MVC 之 Backbone.js <http://www.slideshare.net/treblam/mvcbackbone>`_
 
+sync
+------------------------------
+
+每个model实例都有一个对应的uri，一般这个uri为：
+
+// 如果该model属于一个collection
+[collection.url]/[model.id]
+ 
+// 如果该model不属于一个collection
+[model.urlRoot]/[model.id]
+
+Collection.url 定义collection的url
+Model.urlRoot 定义model的urlRoot
+
+
 
 CoffeeScript
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
