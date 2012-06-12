@@ -5,9 +5,15 @@
       backbone: {
         deps: ['underscore', 'jquery']
       },
-      jquery_mobile: ['jquery'],
-      jquery_tmpl: ['jquery'],
-      index: ['jquery_mobile', 'jquery_tmpl', 'backbone']
+      jquery_mobile: {
+        deps: ['jquery']
+      },
+      jquery_tmpl: {
+        deps: ['jquery']
+      },
+      index: {
+        deps: ['jquery_mobile', 'jquery_tmpl', 'backbone']
+      }
     },
     paths: {
       jquery: '/js/jquery/1.7.2',

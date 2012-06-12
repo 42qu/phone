@@ -1,9 +1,3 @@
-Note = Backbone.Model.extend
-
-    urlRoot: 'j/note'
-
-    hi : -> alert 1
-    
 
 
 
@@ -14,20 +8,15 @@ window.HomeView = Backbone.View.extend
 
     render: (event) -> 
 
-        note = new Note
-
-            title : "my"
-
-        alert note.cid
-        alert note.idAttribute
-        console.info note.toJSON()
-        note.save()
-
-
         $(@el).html @template()
 
         return @
 
+    events:
+
+        "click .TASK" : -> 
+
+            app.navigate("TASK",true)
  
 
 window.TaskView = Backbone.View.extend
@@ -35,7 +24,7 @@ window.TaskView = Backbone.View.extend
 
     template: -> $('#TASK').html()
 
-
+ 
     render: (event) -> 
 
         $(@el).html @template()
@@ -43,21 +32,32 @@ window.TaskView = Backbone.View.extend
         return @
 
 
+    events:
+
+        "click .HOME" : -> 
+            
+            app.navigate("",true)
+
+
 
 Router = Backbone.Router.extend
 
     routes :
 
-        ""      :     "home"
-        task    :     "task"
+        ""      :     "HOME"
+        TASK    :     "TASK"
 
     initialize : -> 
         
         @firstPage = true
 
-    home : ->
+    HOME : ->
 
         @changePage new HomeView()
+
+    TASK : ->
+
+        @changePage new TaskView()
 
 
     changePage : (page) ->
@@ -66,7 +66,6 @@ Router = Backbone.Router.extend
 
         page.render()
 
-        console.info(page.el)
 
         $('body').append page.el
 
@@ -86,7 +85,7 @@ Router = Backbone.Router.extend
 
 $(->
 
-    app = new Router()
+    window.app = new Router()
 
     Backbone.history.start()
 )

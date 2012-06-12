@@ -9,15 +9,22 @@ requirejs.config
                 'jquery'
             ]
 
-        jquery_mobile : ['jquery']
+        jquery_mobile : 
+            deps : [
+                'jquery'
+            ]
 
-        jquery_tmpl : ['jquery']
+        jquery_tmpl : 
+            deps: [
+                'jquery'
+            ]
 
-        index : [
-            'jquery_mobile'
-            'jquery_tmpl'
-            'backbone'
-        ]
+        index : 
+            deps : [
+                'jquery_mobile'
+                'jquery_tmpl'
+                'backbone'
+            ]
 
     paths :
         

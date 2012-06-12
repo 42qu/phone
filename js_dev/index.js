@@ -1,28 +1,18 @@
 (function() {
-  var Note, Router;
-
-  Note = Backbone.Model.extend({
-    urlRoot: 'j/note',
-    hi: function() {
-      return alert(1);
-    }
-  });
+  var Router;
 
   window.HomeView = Backbone.View.extend({
     template: function() {
       return $('#HOME').html();
     },
     render: function(event) {
-      var note;
-      note = new Note({
-        title: "my"
-      });
-      alert(note.cid);
-      alert(note.idAttribute);
-      console.info(note.toJSON());
-      note.save();
       $(this.el).html(this.template());
       return this;
+    },
+    events: {
+      "click .TASK": function() {
+        return app.navigate("TASK", true);
+      }
     }
   });
 
@@ -33,25 +23,32 @@
     render: function(event) {
       $(this.el).html(this.template());
       return this;
+    },
+    events: {
+      "click .HOME": function() {
+        return app.navigate("", true);
+      }
     }
   });
 
   Router = Backbone.Router.extend({
     routes: {
-      "": "home",
-      task: "task"
+      "": "HOME",
+      TASK: "TASK"
     },
     initialize: function() {
       return this.firstPage = true;
     },
-    home: function() {
+    HOME: function() {
       return this.changePage(new HomeView());
+    },
+    TASK: function() {
+      return this.changePage(new TaskView());
     },
     changePage: function(page) {
       var transition;
       $(page.el).attr('data-role', 'page');
       page.render();
-      console.info(page.el);
       $('body').append(page.el);
       transition = $.mobile.defaultPageTransition;
       if (this.firstPage) {
@@ -66,8 +63,7 @@
   });
 
   $(function() {
-    var app;
-    app = new Router();
+    window.app = new Router();
     return Backbone.history.start();
   });
 
