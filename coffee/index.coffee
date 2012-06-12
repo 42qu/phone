@@ -1,3 +1,7 @@
+Backbone.View.prototype.goto =  (uri) -> 
+
+    app.navigate(uri, true);
+
 
 
 
@@ -9,14 +13,11 @@ window.HomeView = Backbone.View.extend
     render: (event) -> 
 
         $(@el).html @template()
-
         return @
 
     events:
 
-        "click .TASK" : -> 
-
-            app.navigate("TASK",true)
+        "click .TASK" : -> @goto "TASK"
  
 
 window.TaskView = Backbone.View.extend
@@ -34,48 +35,33 @@ window.TaskView = Backbone.View.extend
 
     events:
 
-        "click .HOME" : -> 
+        "click .HOME" : -> @goto "HOME" 
             
-            app.navigate("",true)
-
-
 
 Router = Backbone.Router.extend
 
     routes :
 
-        ""      :     "HOME"
+        HOME    :     "HOME"
         TASK    :     "TASK"
 
-    initialize : -> 
-        
-        @firstPage = true
+    initialize : ->
+        @HOME()
 
-    HOME : ->
+    HOME : -> @goto new HomeView()
 
-        @changePage new HomeView()
-
-    TASK : ->
-
-        @changePage new TaskView()
+    TASK : -> @goto new TaskView()
 
 
-    changePage : (page) ->
-
+    goto : (page) ->
         $(page.el).attr('data-role', 'page')
 
         page.render()
 
-
         $('body').append page.el
 
-        transition = $.mobile.defaultPageTransition;
+        transition = 'none';
         
-        if this.firstPage
- 
-            transition = 'none'
-
-            @firstPage = false
 
         $.mobile.changePage $(page.el), {
             changeHash:false, transition: transition
@@ -88,6 +74,7 @@ $(->
     window.app = new Router()
 
     Backbone.history.start()
+
 )
 
 

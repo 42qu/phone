@@ -1,6 +1,10 @@
 (function() {
   var Router;
 
+  Backbone.View.prototype.goto = function(uri) {
+    return app.navigate(uri, true);
+  };
+
   window.HomeView = Backbone.View.extend({
     template: function() {
       return $('#HOME').html();
@@ -11,7 +15,7 @@
     },
     events: {
       "click .TASK": function() {
-        return app.navigate("TASK", true);
+        return this.goto("TASK");
       }
     }
   });
@@ -26,35 +30,31 @@
     },
     events: {
       "click .HOME": function() {
-        return app.navigate("", true);
+        return this.goto("HOME");
       }
     }
   });
 
   Router = Backbone.Router.extend({
     routes: {
-      "": "HOME",
+      HOME: "HOME",
       TASK: "TASK"
     },
     initialize: function() {
-      return this.firstPage = true;
+      return this.HOME();
     },
     HOME: function() {
-      return this.changePage(new HomeView());
+      return this.goto(new HomeView());
     },
     TASK: function() {
-      return this.changePage(new TaskView());
+      return this.goto(new TaskView());
     },
-    changePage: function(page) {
+    goto: function(page) {
       var transition;
       $(page.el).attr('data-role', 'page');
       page.render();
       $('body').append(page.el);
-      transition = $.mobile.defaultPageTransition;
-      if (this.firstPage) {
-        transition = 'none';
-        this.firstPage = false;
-      }
+      transition = 'none';
       return $.mobile.changePage($(page.el), {
         changeHash: false,
         transition: transition
